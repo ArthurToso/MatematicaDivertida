@@ -1,6 +1,8 @@
 package com.arthurtoso.matematicadivertida
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +13,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val btnContagem = findViewById<Button>(R.id.btnContagem)
+        val btnAritm = findViewById<Button>(R.id.btnAritm)
+        val btnMaiorNum = findViewById<Button>(R.id.btnMaiorNum)
+        btnContagem.setOnClickListener {
+            val intent = Intent(this, Contagem::class.java)
+            startActivity(intent)
+        }
+        btnAritm.setOnClickListener {
+            val intent = Intent(this, AritmeticaBasica::class.java)
+            startActivity(intent)
+        }
+        btnMaiorNum.setOnClickListener {
+            val intent = Intent(this, MaiorNumero::class.java)
+            startActivity(intent)
         }
     }
 }

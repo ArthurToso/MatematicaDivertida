@@ -16,7 +16,8 @@
             android:exported="false" />
         <activity
             android:name=".Contagem"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AritmeticaBasica"
             android:exported="false" />

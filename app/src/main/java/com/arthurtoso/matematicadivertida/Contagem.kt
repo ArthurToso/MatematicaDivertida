@@ -1,6 +1,9 @@
 package com.arthurtoso.matematicadivertida
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,7 +19,7 @@ class Contagem : AppCompatActivity() {
             listOf(4, 7)
         ),
         QuestaoContagem(R.drawable.app_matematica_img_baloes,
-            "Quantos balões tem na imagem",
+            "Quantos balões tem na imagem?",
             6,
             listOf(3,5)
         ),
@@ -66,6 +69,14 @@ class Contagem : AppCompatActivity() {
     var questaoAtual = 0
     var acertos = 0
 
+    lateinit var btnOpcao1: Button
+    lateinit var btnOpcao2: Button
+    lateinit var btnOpcao3: Button
+    lateinit var tvIndice: TextView
+    lateinit var tvQuestao: TextView
+    lateinit var ivQuestao: ImageView
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -75,5 +86,44 @@ class Contagem : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        ivQuestao = findViewById(R.id.ivQuestao)
+        tvQuestao = findViewById(R.id.tvQuestao)
+        tvIndice = findViewById(R.id.tvIndice)
+        btnOpcao1 = findViewById(R.id.botaoOpcao1)
+        btnOpcao2 = findViewById(R.id.botaoOpcao2)
+        btnOpcao3 = findViewById(R.id.botaoOpcao3)
+
+        novaRodada()
     }
+
+    private fun novaRodada(){
+        questoesRodada = listaQuestoes.shuffled().take(5)
+        questaoAtual = 0
+        exibirPerguntaAtual()
+    }
+
+    private fun exibirPerguntaAtual(){
+        val questao = questoesRodada[questaoAtual]
+        tvIndice.text = "Questão ${questaoAtual + 1} de ${questoesRodada.size}"
+        ivQuestao.setImageResource(questao.idImagem)
+        tvQuestao.text = questao.pergunta
+        val listaOpcoes = mutableListOf<Int>()
+        listaOpcoes.add(questao.respostaCorreta)
+        listaOpcoes.add(questao.respostasErradas[0])
+        listaOpcoes.add(questao.respostasErradas[1])
+        listaOpcoes.shuffle()
+        btnOpcao1.text = listaOpcoes[0].toString()
+        btnOpcao1.tag = listaOpcoes[0]
+        btnOpcao2.text = listaOpcoes[1].toString()
+        btnOpcao2.tag = listaOpcoes[1]
+        btnOpcao3.text = listaOpcoes[2].toString()
+        btnOpcao3.tag = listaOpcoes[2]
+    }
+
+    private fun verificarResposta(){
+        //Colocar essa funcao no onClick dos botoes
+        //Implementar logica, ver o trabalho das flags
+    }
+
 }

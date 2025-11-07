@@ -1,10 +1,15 @@
 package com.arthurtoso.matematicadivertida
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -76,7 +81,6 @@ class Contagem : AppCompatActivity() {
     lateinit var tvQuestao: TextView
     lateinit var ivQuestao: ImageView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -93,6 +97,10 @@ class Contagem : AppCompatActivity() {
         btnOpcao1 = findViewById(R.id.botaoOpcao1)
         btnOpcao2 = findViewById(R.id.botaoOpcao2)
         btnOpcao3 = findViewById(R.id.botaoOpcao3)
+
+        btnOpcao1.setOnClickListener { verificarResposta(it) }
+        btnOpcao2.setOnClickListener { verificarResposta(it) }
+        btnOpcao3.setOnClickListener { verificarResposta(it) }
 
         novaRodada()
     }
@@ -121,9 +129,52 @@ class Contagem : AppCompatActivity() {
         btnOpcao3.tag = listaOpcoes[2]
     }
 
-    private fun verificarResposta(){
-        //Colocar essa funcao no onClick dos botoes
-        //Implementar logica, ver o trabalho das flags
+    private fun verificarResposta(botaoClicado: View){
+        val respostaUsuario = botaoClicado.tag as Int
+        val respostaCorreta = questoesRodada[questaoAtual].respostaCorreta
+
+        val alertAcerto: AlertDialog.Builder = AlertDialog.Builder(this)
+        val alertErro: AlertDialog.Builder = AlertDialog.Builder(this)
+
+        alertAcerto
+            .setTitle("Parabéns!")
+            .setMessage("Você Acertou")
+            .setPositiveButton("Continuar") {dialog, wich -> dialog.dismiss()}
+
+        alertErro
+            .setTitle("Errou!")
+            .setMessage("A resposta era: $respostaCorreta")
+            .setPositiveButton("Continuar") {dialog, wich -> dialog.dismiss()}
+
+        if (respostaUsuario == respostaCorreta){
+            //Acerto
+            acertos += 20
+            alertAcerto.show()
+            proximaPergunta()
+        } else {
+            //Erro
+            alertErro.show()
+            proximaPergunta()
+        }
     }
 
+    private fun proximaPergunta(){
+        questaoAtual ++
+        if (questaoAtual < questoesRodada.size){
+            exibirPerguntaAtual()
+        } else {
+            finalizarJogo()
+        }
+    }
+
+    private fun finalizarJogo(){
+        //Handler para não fechar instantaneamente a activity,
+        //dando um tempo para o usuário ver se acertou ou errou
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, ContagemResultado::class.java)
+            intent.putExtra("acertos", acertos)
+            startActivity(intent)
+            finish()
+        }, 1500)
+    }
 }

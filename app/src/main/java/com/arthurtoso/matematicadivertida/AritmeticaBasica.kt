@@ -13,6 +13,8 @@ var acertos = 0
 class AritmeticaBasica : AppCompatActivity() {
     private var operando1: Int = 0
     private var operando2: Int = 0
+    private var operador: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -24,16 +26,34 @@ class AritmeticaBasica : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        gerarNumeros()
+        gerarExpressao()
         exibirNumeros()
     }
     private fun gerarNumeros(){
         operando1 = Random.nextInt(0,9)
         operando2 = Random.nextInt(0,9)
     }
+    private fun gerarExpressao(){
+        gerarNumeros()
+        operador = if (Random.nextBoolean()) "+" else "-"
+        val resultado = caclcularExpressao()
+        var respostaCerts = if (
+            resultado = resposta
+        ) else (
+
+        )
+    }
+    private fun caclcularExpressao(): Int{
+        return when (operador){
+            "+" -> operando1 + operando2
+            "-" -> operando1 - operando2
+            else -> 0
+        }
+    }
 
     private fun exibirNumeros(){
         findViewById<TextView>(R.id.operando1).text = "$operando1"
         findViewById<TextView>(R.id.operando2).text = "$operando2"
+        findViewById<TextView>(R.id.operador).text = "$operador"
     }
 }

@@ -3,8 +3,100 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#E3F2FD"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AritmeticaBasica">
+
+    <TextView
+        android:id="@+id/tvIndice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#333333"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/operando1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/operando1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="#333333"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/operando2"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342" />
+
+    <TextView
+        android:id="@+id/operando2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="#333333"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.341" />
+
+    <TextView
+        android:id="@+id/operador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:textColor="#333333"
+        app:layout_constraintBottom_toTopOf="@+id/verificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operando2"
+        app:layout_constraintVertical_bias="0.196" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="248dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="292dp"
+        android:shadowColor="@color/black"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndice"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/verificar"
+        android:layout_width="256dp"
+        android:layout_height="64dp"
+        android:layout_margin="16dp"
+        android:text="VERIFICAR"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:backgroundTint="#4CAF50"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal"
+        app:layout_constraintVertical_bias="0.533" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

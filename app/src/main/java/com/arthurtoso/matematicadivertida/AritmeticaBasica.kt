@@ -42,6 +42,11 @@ class AritmeticaBasica : AppCompatActivity() {
     private fun gerarExpressao(){
         gerarNumeros()
         operador = if (Random.nextBoolean()) "+" else "-"
+        if (operando2 > operando1 && operador == "-"){
+            val temp = operando1
+            operando1 = operando2
+            operando2 = temp
+        }
         resultadoCorreto = caclcularExpressao()
     }
     private fun caclcularExpressao(): Int{

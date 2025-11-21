@@ -12,24 +12,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MatematicaDivertida">
         <activity
+            android:name=".MaiorNumeroResultado"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ContagemResultado"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MaiorNumero"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Contagem"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
             android:name=".AritmeticaBasica"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.App.Starting">
+            android:theme="@style/Theme.App.Starting"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

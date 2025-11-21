@@ -3,8 +3,112 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#E3F2FD"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MaiorNumero">
+
+    <TextView
+        android:id="@+id/tvIndice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#333333"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/numero1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/numero1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="#2196F3"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/numero2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndice"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/numero3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="#2196F3"
+        android:textSize="48sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/numero1"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/numero2"
+        tools:text="5" />
+
+    <TextView
+        android:id="@+id/numero2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="#2196F3"
+        android:textSize="48sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/numero1"
+
+        app:layout_constraintEnd_toStartOf="@+id/numero3"
+        app:layout_constraintStart_toEndOf="@+id/numero1"
+        tools:text="8" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="248dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="292dp"
+        android:shadowColor="@color/black"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/digite_um_n_mero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndice"
+        app:layout_constraintVertical_bias="0.101"
+        android:maxLength="3"/>
+
+    <Button
+        android:id="@+id/btnVerificar"
+        android:layout_width="256dp"
+        android:layout_height="64dp"
+        android:layout_margin="16dp"
+        android:text="VERIFICAR"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:backgroundTint="#4CAF50"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+        app:layout_constraintVertical_bias="0.533" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forme o maior número possível"
+        android:fontFamily="@font/nunito_bold"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numero1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
